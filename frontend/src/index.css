@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-nav-height: 76px;
+  --brand-primary: #cb2187;
+  --base-black: #000000;
+  --base-white: #ffffff;
+  --text-gray-700: #595858;
+  --text-gray-500: #808080;
+  --bg-alt: #d3d3d3;
+  --bg-brand-tint: #f6eaf2;
+  --bg-base: #f5f5f5;
+  --bg-dark: #666666;
+  --status-success: #008a25;
+  --status-warning: #f2c94c;
+  --status-error: #ff0a22;
+  --accent-green: #8ed69a;
+  --accent-yellow: #ead891;
+  --accent-flamingo: #f56675;
+  --accent-teal: #69bbb5;
+  --accent-pink: #e7d3df;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: clip;
+}
+
+@supports not (overflow-x: clip) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-base);
+  color: var(--text-gray-700);
+}
+
+@layer components {
+  .btn-brand-gradient {
+    background: linear-gradient(110deg, #cb2187 0%, #cb2187 45%, #ecaed3 100%);
+    color: var(--base-white);
+  }
+}
+
+@layer utilities {
+  .text-h1-display {
+    font-size: 64px;
+    line-height: 76px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .text-h2-display {
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
+
+  .text-h7-heading {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 600;
+  }
+
+  .text-body-lg {
+    font-size: 18px;
+    line-height: 26px;
+    font-weight: 500;
+  }
+}
+
+/* Hide scrollbar for carousel/horizontal scroll */
+.scrollbar-hide {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utility */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Selection color - PML pink */
+::selection {
+  background: var(--brand-primary);
+  color: white;
+}
+
+/* Focus visible ring - PML pink */
+:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Slider thumb */
+[data-radix-slider-thumb] {
+  transition: box-shadow 150ms ease;
+}
+[data-radix-slider-thumb]:active {
+  cursor: grabbing;
+}
+
+/* Custom soft shadow */
+.shadow-soft {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+html.sticky-search-active header {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease-in-out;
+}
+
+html.sticky-search-active .search-sticky {
+  position: fixed;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  margin-top: 0 !important;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+html.sticky-search-active .search-sticky .search-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+html.sticky-search-active .search-sticky form {
+  z-index: 1110;
+}
+
+html.sticky-search-active .search-sticky.fullwidth .search-inner,
+html.sticky-search-active .search-sticky .search-inner.fullwidth {
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+html.sticky-search-active .search-sticky .search-inner form {
+  border-radius: 0.5rem;
+}
